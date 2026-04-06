@@ -13,8 +13,10 @@
   --text:#c8d8f0;--muted:#4a6080;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
+/* scrollbar-gutter prevents the page width changing when scrollbar appears/disappears → eliminates shake */
 html{scroll-behavior:smooth;overflow-y:scroll;scrollbar-gutter:stable;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
+/* Lock scroll while loader is visible so nothing jumps beneath it */
 body.loading{overflow:hidden;}
 
 /* ══ LOADER ══ */
@@ -420,7 +422,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="socials">
       <a href="https://github.com/GihenPesangith" target="_blank" rel="noopener" class="sb"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/gihen-pesangith-200695312/" target="_blank" rel="noopener" class="sb"><i class="fab fa-linkedin-in"></i></a>
-      <a href="/cdn-cgi/l/email-protection#a1c6c8c9c4cfc5c9c0d3ccc0d3c0d5c9cfc4e1c6ccc0c8cd8fc2cecc" class="sb"><i class="fas fa-envelope"></i></a>
+      <a href="mailto:gihendharmarathne@gmail.com" class="sb" title="Email Me"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
   <div class="av-zone">
@@ -675,7 +677,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="cc-list rvl">
       <div class="cc"><div class="cic" style="background:rgba(0,212,255,.1);color:var(--a1);"><i class="fas fa-map-marker-alt"></i></div><div><div class="ccl">Location</div><div class="ccv">Sri Lanka 🇱🇰</div></div></div>
       <div class="cc"><div class="cic" style="background:rgba(0,255,157,.1);color:var(--a2);"><i class="fas fa-university"></i></div><div><div class="ccl">University</div><div class="ccv">Kotelawala Defence University</div></div></div>
-      <a href="/cdn-cgi/l/email-protection#284f41404d464c40495a45495a495c40464d684f45494144064b4745" class="cc"><div class="cic" style="background:rgba(168,85,247,.1);color:var(--a4);"><i class="fas fa-envelope"></i></div><div><div class="ccl">Email</div><div class="ccv"><span class="__cf_email__" data-cfemail="c4a3adaca1aaa0aca5b6a9a5b6a5b0acaaa184a3a9a5ada8eaa7aba9">[email&#160;protected]</span></div></div></a>
+      <a href="mailto:gihendharmarathne@gmail.com" class="cc"><div class="cic" style="background:rgba(168,85,247,.1);color:var(--a4);"><i class="fas fa-envelope"></i></div><div><div class="ccl">Email</div><div class="ccv">gihendharmarathne@gmail.com</div></div></a>
       <a href="https://www.linkedin.com/in/gihen-pesangith-200695312/" target="_blank" rel="noopener" class="cc"><div class="cic" style="background:rgba(0,212,255,.1);color:var(--a1);"><i class="fab fa-linkedin-in"></i></div><div><div class="ccl">LinkedIn</div><div class="ccv">linkedin.com/in/gihen-pesangith</div></div></a>
       <a href="https://github.com/GihenPesangith" target="_blank" rel="noopener" class="cc"><div class="cic" style="background:rgba(255,255,255,.05);color:#fff;"><i class="fab fa-github"></i></div><div><div class="ccl">GitHub</div><div class="ccv">github.com/GihenPesangith</div></div></a>
     </div>
@@ -687,11 +689,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="f-group"><label class="fi-label">Subject</label><input type="text" class="fi" id="cSubject" placeholder="Project collaboration"/></div>
       <div class="f-group"><label class="fi-label">Message</label><textarea class="fi" id="cMessage" placeholder="Tell me about your project…"></textarea></div>
       <div id="formStatus" class="form-status"></div>
-      <!-- Remove this notice once Formspree is configured -->
-      <div id="formspreeNotice" style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.2);border-radius:10px;padding:.8rem 1rem;font-size:.8rem;color:#c8a0e8;line-height:1.6;margin-bottom:.4rem;">
-        <strong style="color:#a855f7;">⚡ To receive emails directly:</strong> Go to <a href="https://formspree.io" target="_blank" style="color:#a855f7;">formspree.io</a> → Sign up free → New Form → copy your endpoint URL → paste it into the <code style="background:rgba(255,255,255,.08);padding:.1rem .4rem;border-radius:4px;">FORMSPREE_URL</code> variable in this file's script. Until then, the button opens your email app as a fallback.
-      </div>
-      <button class="btn-mag btn-p" style="align-self:flex-start;" onclick="sendMessage()">Send Message &nbsp;<i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
 </section>
@@ -705,9 +702,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </footer>
 <button id="sTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── LOADER ── */
 (function(){
+  // Lock scroll so no layout shift while loader is visible
   document.body.classList.add('loading');
   const bar=document.getElementById('ldBar'),pct=document.getElementById('ldPct'),ldr=document.getElementById('loader');
   let p=0;
@@ -718,6 +716,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       bar.style.width='100%'; pct.textContent='100%';
       setTimeout(()=>{
         ldr.classList.add('done');
+        // Unlock scroll AFTER loader fully fades (500ms transition)
         setTimeout(()=>document.body.classList.remove('loading'), 520);
       }, 300);
     }
@@ -883,6 +882,8 @@ document.querySelectorAll('.btn-mag').forEach(btn=>{
 /* ── STAGGER DELAYS ── */
 document.querySelectorAll('.exp-grid .ec').forEach((c,i)=>{c.style.transitionDelay=`${i*.09}s`;});
 document.querySelectorAll('.pj-grid .pc').forEach((c,i)=>{c.style.transitionDelay=`${i*.08}s`;});
+
+
 
 const FORMSPREE_URL = 'https://formspree.io/f/mvzvdaql';
 // Hide setup notice automatically once real endpoint is pasted in
