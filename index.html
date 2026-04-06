@@ -845,21 +845,7 @@ addEventListener('scroll',()=>{
 const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('on');}),{threshold:.07});
 document.querySelectorAll('.rv,.rvl,.rvr,.rvz,.sdiv').forEach(el=>obs.observe(el));
 
-/* ── TEXT SCRAMBLE on section titles ── */
-const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&';
-function scramble(el){
-  if(el.dataset.scrambled) return;
-  el.dataset.scrambled='1';
-  const original=el.textContent;
-  let iter=0;const max=original.length*2;
-  const iv=setInterval(()=>{
-    el.textContent=original.split('').map((_,i)=>i<Math.floor(iter/2)?original[i]:chars[Math.floor(Math.random()*chars.length)]).join('');
-    iter++;
-    if(iter>=max){el.textContent=original;clearInterval(iv);}
-  },35);
-}
-const titleObs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)scramble(en.target);}),{threshold:.5});
-document.querySelectorAll('section .stitle').forEach(el=>titleObs.observe(el));
+/* Scramble animation removed — was causing layout reflow/shake */
 
 /* ── SKILL BARS ── */
 const bObs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.querySelectorAll('.fill').forEach((f,i)=>{setTimeout(()=>{f.style.width=f.dataset.w+'%';setTimeout(()=>f.classList.add('done'),1800);},120+i*140);});}),{threshold:.18});
@@ -914,7 +900,7 @@ document.querySelectorAll('.pj-grid .pc').forEach((c,i)=>{c.style.transitionDela
   ║  5. Emails will arrive directly in gihendharmarathne@gmail  ║
   ╚══════════════════════════════════════════════════════════════╝
 */
-const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
+const FORMSPREE_URL = 'https://formspree.io/f/mvzvdaql';
 // Hide setup notice automatically once real endpoint is pasted in
 if(!FORMSPREE_URL.includes('YOUR_FORMSPREE_ENDPOINT')){
   const n=document.getElementById('formspreeNotice');if(n)n.style.display='none';
