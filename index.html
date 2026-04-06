@@ -13,10 +13,8 @@
   --text:#c8d8f0;--muted:#4a6080;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-/* scrollbar-gutter prevents the page width changing when scrollbar appears/disappears → eliminates shake */
 html{scroll-behavior:smooth;overflow-y:scroll;scrollbar-gutter:stable;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
-/* Lock scroll while loader is visible so nothing jumps beneath it */
 body.loading{overflow:hidden;}
 
 /* ══ LOADER ══ */
@@ -710,7 +708,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── LOADER ── */
 (function(){
-  // Lock scroll so no layout shift while loader is visible
   document.body.classList.add('loading');
   const bar=document.getElementById('ldBar'),pct=document.getElementById('ldPct'),ldr=document.getElementById('loader');
   let p=0;
@@ -721,7 +718,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       bar.style.width='100%'; pct.textContent='100%';
       setTimeout(()=>{
         ldr.classList.add('done');
-        // Unlock scroll AFTER loader fully fades (500ms transition)
         setTimeout(()=>document.body.classList.remove('loading'), 520);
       }, 300);
     }
@@ -888,18 +884,6 @@ document.querySelectorAll('.btn-mag').forEach(btn=>{
 document.querySelectorAll('.exp-grid .ec').forEach((c,i)=>{c.style.transitionDelay=`${i*.09}s`;});
 document.querySelectorAll('.pj-grid .pc').forEach((c,i)=>{c.style.transitionDelay=`${i*.08}s`;});
 
-/* ── CONTACT FORM — Formspree (real email delivery) ── */
-/*
-  ╔══════════════════════════════════════════════════════════════╗
-  ║  SETUP (takes 2 minutes, FREE):                             ║
-  ║  1. Go to formspree.io → Sign Up (free)                     ║
-  ║  2. Click "New Form" → give it a name → Submit              ║
-  ║  3. Copy your form endpoint, looks like:                    ║
-  ║     https://formspree.io/f/xpwzabcd                         ║
-  ║  4. Replace YOUR_FORMSPREE_ENDPOINT below with it           ║
-  ║  5. Emails will arrive directly in gihendharmarathne@gmail  ║
-  ╚══════════════════════════════════════════════════════════════╝
-*/
 const FORMSPREE_URL = 'https://formspree.io/f/mvzvdaql';
 // Hide setup notice automatically once real endpoint is pasted in
 if(!FORMSPREE_URL.includes('YOUR_FORMSPREE_ENDPOINT')){
