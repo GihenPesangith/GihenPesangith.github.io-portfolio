@@ -689,6 +689,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="f-group"><label class="fi-label">Subject</label><input type="text" class="fi" id="cSubject" placeholder="Project collaboration"/></div>
       <div class="f-group"><label class="fi-label">Message</label><textarea class="fi" id="cMessage" placeholder="Tell me about your project…"></textarea></div>
       <div id="formStatus" class="form-status"></div>
+      <button class="btn-mag btn-p" style="align-self:flex-start;" onclick="sendMessage()">Send Message &nbsp;<i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
 </section>
@@ -882,7 +883,6 @@ document.querySelectorAll('.btn-mag').forEach(btn=>{
 /* ── STAGGER DELAYS ── */
 document.querySelectorAll('.exp-grid .ec').forEach((c,i)=>{c.style.transitionDelay=`${i*.09}s`;});
 document.querySelectorAll('.pj-grid .pc').forEach((c,i)=>{c.style.transitionDelay=`${i*.08}s`;});
-
 
 
 const FORMSPREE_URL = 'https://formspree.io/f/mvzvdaql';
