@@ -13,10 +13,8 @@
   --text:#c8d8f0;--muted:#4a6080;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-/* scrollbar-gutter prevents the page width changing when scrollbar appears/disappears → eliminates shake */
 html{scroll-behavior:smooth;overflow-y:scroll;scrollbar-gutter:stable;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;}
-/* Lock scroll while loader is visible so nothing jumps beneath it */
 body.loading{overflow:hidden;}
 
 /* ══ LOADER ══ */
@@ -47,14 +45,12 @@ body.loading{overflow:hidden;}
 #cur-trail{position:fixed;width:36px;height:36px;border:1.5px solid rgba(0,212,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .16s ease;}
 #cur-trail.big{width:68px;height:68px;border-color:var(--a2);background:rgba(0,255,157,.025);}
 #cur-trail.click{transform:translate(-50%,-50%)scale(.55);border-color:var(--a1);}
-
-/* Mouse trail */
 .trail-dot{position:fixed;pointer-events:none;border-radius:50%;z-index:9990;transform:translate(-50%,-50%);animation:trailFade .6s ease forwards;}
 @keyframes trailFade{0%{opacity:.7;width:6px;height:6px;}100%{opacity:0;width:2px;height:2px;}}
 
 #cvs{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
-/* ══ SPOTLIGHT (follows mouse in hero) ══ */
+/* ══ SPOTLIGHT ══ */
 #spotlight{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,.06) 0%,transparent 65%);pointer-events:none;transform:translate(-50%,-50%);z-index:1;transition:opacity .4s;opacity:0;}
 
 /* ══ NAV ══ */
@@ -88,14 +84,11 @@ nav.sc{padding:.85rem 6%;background:rgba(4,7,16,.95);backdrop-filter:blur(32px);
 .hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.02) 1px,transparent 1px);background-size:60px 60px;animation:gridPan 25s linear infinite;}
 @keyframes gridPan{from{background-position:0 0;}to{background-position:60px 60px;}}
 .scan-line{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,212,255,.006) 2px,rgba(0,212,255,.006) 4px);z-index:1;}
-
-/* floating data points */
 .data-pts{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
 .dp{position:absolute;font-size:.65rem;font-weight:700;font-family:'DM Sans',sans-serif;color:rgba(0,212,255,.12);animation:dpFloat linear infinite;white-space:nowrap;}
 @keyframes dpFloat{0%{transform:translateY(100vh);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-10vh);opacity:0;}}
 
 .hero-content{position:relative;z-index:2;max-width:850px;}
-
 .badge{display:inline-flex;align-items:center;gap:.6rem;border-radius:50px;padding:.45rem 1.2rem;font-size:.77rem;color:var(--a2);margin-bottom:2rem;font-weight:700;animation:badgeIn .8s ease both;position:relative;overflow:hidden;border:1px solid rgba(0,255,157,.25);background:rgba(0,255,157,.05);}
 .badge::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(0,255,157,.12),transparent);transform:translateX(-100%);animation:shimmer 2.5s infinite;}
 @keyframes shimmer{to{transform:translateX(100%);}}
@@ -119,8 +112,6 @@ nav.sc{padding:.85rem 6%;background:rgba(4,7,16,.95);backdrop-filter:blur(32px);
 @keyframes blink{50%{opacity:0;}}
 .hero-desc{color:var(--muted);line-height:1.9;max-width:520px;font-size:.97rem;animation:fu .7s .3s both;}
 .hero-ctas{margin-top:2.2rem;display:flex;gap:1rem;flex-wrap:wrap;animation:fu .7s .38s both;}
-
-/* ── FLOATING TECH PILLS ── */
 .tech-pills{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.6rem;animation:fu .7s .5s both;}
 .tpill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:30px;padding:.28rem .8rem;font-size:.72rem;font-weight:600;color:var(--muted);transition:all .3s;animation:pillFloat ease-in-out infinite;}
 .tpill i{font-size:.65rem;}
@@ -196,8 +187,6 @@ section{padding:7rem 6%;position:relative;z-index:1;}
 .sl::before{content:'';width:20px;height:2px;background:var(--a1);}
 .sdiv{width:0;height:3px;background:linear-gradient(90deg,var(--a1),var(--a2));border-radius:2px;margin-bottom:1.4rem;transition:width 1.2s cubic-bezier(.16,1,.3,1);}
 .sdiv.on{width:60px;}
-
-/* ── SCRAMBLE TITLE ── */
 .stitle{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;color:#fff;letter-spacing:-1.5px;margin-bottom:.8rem;}
 .ssub{color:var(--muted);font-size:.96rem;max-width:530px;line-height:1.85;margin-bottom:3.5rem;}
 
@@ -210,10 +199,9 @@ section{padding:7rem 6%;position:relative;z-index:1;}
 
 /* ══ ABOUT ══ */
 .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;}
-.av-card{width:260px;height:320px;border-radius:24px;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);margin:0 auto 1.5rem;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s;}
+.av-card{width:260px;height:340px;border-radius:24px;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);margin:0 auto 1.5rem;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s;}
 .av-card:hover{transform:translateY(-10px)scale(1.02)rotateY(3deg);box-shadow:0 50px 100px rgba(0,0,0,.6),0 0 60px rgba(0,212,255,.12);}
 .av-card::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,212,255,.08),rgba(0,255,157,.04));pointer-events:none;}
-/* Animated border on card */
 .av-card::after{content:'';position:absolute;inset:-1px;border-radius:24px;background:linear-gradient(var(--card-angle,0deg),var(--a1),var(--a2),var(--a4),var(--a1));z-index:-1;animation:borderSpin 4s linear infinite;}
 @property --card-angle{syntax:'<angle>';initial-value:0deg;inherits:false;}
 @keyframes borderSpin{to{--card-angle:360deg;}}
@@ -226,6 +214,27 @@ section{padding:7rem 6%;position:relative;z-index:1;}
 .abt-photo-fb{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(168,85,247,.12));border:3px solid rgba(0,212,255,.3);display:flex;align-items:center;justify-content:center;font-size:4rem;transition:transform .3s;}
 .av-card:hover .abt-photo,.av-card:hover .abt-photo-fb{transform:scale(1.06);}
 .av-card-lbl{font-size:.72rem;color:var(--a1);font-weight:700;letter-spacing:1.5px;position:relative;z-index:1;text-align:center;padding:0 1rem;}
+
+/* ══ CV DOWNLOAD BUTTON ══ */
+.cv-download-wrap{position:relative;z-index:1;width:100%;padding:0 1.2rem 0.4rem;display:flex;justify-content:center;}
+.cv-btn{display:inline-flex;align-items:center;gap:.55rem;background:linear-gradient(135deg,rgba(0,212,255,.12),rgba(0,255,157,.08));border:1px solid rgba(0,212,255,.35);border-radius:50px;padding:.6rem 1.4rem;font-size:.76rem;font-weight:700;color:var(--a1);text-decoration:none;letter-spacing:.5px;cursor:pointer;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.16,1,.3,1);white-space:nowrap;}
+.cv-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--a1),var(--a2));opacity:0;transition:opacity .35s;}
+.cv-btn:hover::before{opacity:1;}
+.cv-btn:hover{color:#040710;box-shadow:0 0 40px rgba(0,212,255,.5),0 8px 25px rgba(0,0,0,.3);transform:translateY(-3px) scale(1.04);border-color:transparent;}
+.cv-btn .cv-icon{position:relative;z-index:1;font-size:.9rem;transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.cv-btn:hover .cv-icon{transform:translateY(3px);}
+.cv-btn .cv-text{position:relative;z-index:1;}
+.cv-btn .cv-arrow{position:relative;z-index:1;font-size:.65rem;opacity:.7;transition:transform .3s,opacity .3s;}
+.cv-btn:hover .cv-arrow{transform:translateY(3px);opacity:1;}
+/* Shimmer sweep on cv-btn */
+.cv-btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-20deg);transition:left .55s ease;pointer-events:none;}
+.cv-btn:hover::after{left:160%;}
+/* Pulse ring around CV button */
+.cv-pulse{position:absolute;inset:-4px;border-radius:50px;border:1.5px solid rgba(0,212,255,.25);animation:cvRingPulse 2.5s ease-in-out infinite;}
+.cv-pulse2{position:absolute;inset:-8px;border-radius:50px;border:1px solid rgba(0,255,157,.12);animation:cvRingPulse 2.5s 1.2s ease-in-out infinite;}
+@keyframes cvRingPulse{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:0;transform:scale(1.06);}}
+
+/* ══ ABOUT RIGHT SIDE ══ */
 .ic-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;}
 .ic{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;transition:border-color .3s,transform .3s,box-shadow .3s;}
 .ic:hover{border-color:rgba(0,212,255,.3);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.3);}
@@ -283,7 +292,6 @@ section{padding:7rem 6%;position:relative;z-index:1;}
 .pc:hover .pt-img.loaded{transform:scale(1.09);filter:brightness(1.12)saturate(1.1);}
 .pt-scan{position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(180deg,transparent,rgba(0,212,255,.07),transparent);z-index:5;transition:top .6s ease;}
 .pc:hover .pt-scan{top:200%;}
-/* Corner accent on cards */
 .pt-corner{position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 36px 36px 0;border-color:transparent rgba(0,212,255,.15) transparent transparent;z-index:6;transition:border-color .3s;}
 .pc:hover .pt-corner{border-color:transparent rgba(0,212,255,.4) transparent transparent;}
 .pb{padding:1.5rem;}
@@ -354,12 +362,78 @@ footer::before{content:'';position:absolute;bottom:0;left:50%;transform:translat
 @keyframes fu{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
 @keyframes badgeIn{from{opacity:0;transform:translateY(-14px);}to{opacity:1;transform:translateY(0);}}
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.022;pointer-events:none;z-index:800;}
+
+/* ══ EXTRA ANIMATIONS ══ */
+
+/* Floating particles for about section */
+.about-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
+.ap{position:absolute;border-radius:50%;animation:apFloat ease-in-out infinite;}
+@keyframes apFloat{0%,100%{transform:translateY(0) rotate(0deg);opacity:.4;}50%{transform:translateY(-30px) rotate(180deg);opacity:.8;}}
+
+/* Section entrance animation for headings */
+.stitle{animation:none;}
+.stitle.on-anim{animation:titleReveal .8s cubic-bezier(.16,1,.3,1) both;}
+@keyframes titleReveal{from{opacity:0;transform:translateY(20px) skewY(3deg);}to{opacity:1;transform:none;}}
+
+/* Hover glow on nav */
+nav.sc .logo{text-shadow:0 0 20px rgba(0,212,255,.3);}
+
+/* Card float animation for about card on scroll in */
+@keyframes cardEntrance{0%{opacity:0;transform:translateY(60px) rotateY(-15deg) scale(.9);}100%{opacity:1;transform:none;}}
+.rvl.on .av-card{animation:cardEntrance .9s .2s cubic-bezier(.16,1,.3,1) both;}
+
+/* Expertise icon bounce on hover */
+@keyframes iconBounce{0%,100%{transform:scale(1);}30%{transform:scale(1.3) rotate(-12deg);}60%{transform:scale(1.1) rotate(6deg);}}
+.ec:hover .ec-icon{animation:iconBounce .5s ease both;}
+
+/* Timeline dot ping on hover */
+@keyframes dotPing{0%{box-shadow:0 0 0 0 rgba(0,212,255,.7);}100%{box-shadow:0 0 0 16px rgba(0,212,255,0);}}
+.ti:hover.L::after,.ti:hover.R::after{animation:dotPing .6s ease-out;}
+
+/* Skill bar glow on fill */
+.fill.done{box-shadow:0 0 12px rgba(0,212,255,.4);}
+
+/* Download toast notification */
+#dlToast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(30px);background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(0,255,157,.1));border:1px solid rgba(0,212,255,.35);backdrop-filter:blur(20px);border-radius:50px;padding:.7rem 1.6rem;font-size:.82rem;font-weight:700;color:var(--a2);z-index:9000;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;gap:.5rem;white-space:nowrap;}
+#dlToast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* Ripple on CV button click */
+@keyframes cvRipple{0%{transform:translate(-50%,-50%)scale(0);opacity:.6;}100%{transform:translate(-50%,-50%)scale(4);opacity:0;}}
+.cv-ripple-el{position:absolute;border-radius:50%;width:60px;height:60px;background:rgba(0,212,255,.3);pointer-events:none;animation:cvRipple .6s ease-out forwards;}
+
+/* Animated underline on section labels */
+.sl{position:relative;}
+
+/* Stagger fade for project cards */
+.pj-grid .pc:nth-child(1){transition-delay:.05s;}
+.pj-grid .pc:nth-child(2){transition-delay:.1s;}
+.pj-grid .pc:nth-child(3){transition-delay:.15s;}
+.pj-grid .pc:nth-child(4){transition-delay:.2s;}
+.pj-grid .pc:nth-child(5){transition-delay:.25s;}
+.pj-grid .pc:nth-child(6){transition-delay:.3s;}
+.pj-grid .pc:nth-child(7){transition-delay:.35s;}
+
+/* Expertise card stagger */
+.exp-grid .ec:nth-child(1){transition-delay:.05s;}
+.exp-grid .ec:nth-child(2){transition-delay:.1s;}
+.exp-grid .ec:nth-child(3){transition-delay:.15s;}
+.exp-grid .ec:nth-child(4){transition-delay:.2s;}
+.exp-grid .ec:nth-child(5){transition-delay:.25s;}
+.exp-grid .ec:nth-child(6){transition-delay:.3s;}
+
+/* Twinkling star dots in bg */
+.star{position:fixed;border-radius:50%;pointer-events:none;animation:starTwinkle ease-in-out infinite;}
+@keyframes starTwinkle{0%,100%{opacity:.15;transform:scale(1);}50%{opacity:.6;transform:scale(1.5);}}
+
 @media(max-width:1100px){.av-zone{display:none;}.tl{grid-template-columns:1fr;}.tl::before,.tl-line{left:0;}.ti.L{text-align:left;padding-right:0;padding-left:2.5rem;}.ti.L::after{right:auto;left:-7px;}.about-grid{grid-template-columns:1fr;gap:3rem;}}
 @media(max-width:800px){.cg{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}.nav-links{display:none;}.pj-grid{grid-template-columns:1fr;}}
 @media(max-width:500px){section{padding:5rem 5%;}.stats-row{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
+
+<!-- DOWNLOAD TOAST -->
+<div id="dlToast"><i class="fas fa-check-circle"></i> CV Download Started!</div>
 
 <!-- SIDE SECTION DOTS -->
 <div id="sectionDots">
@@ -410,7 +484,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <a href="#projects" class="btn-mag btn-p">Explore My Work</a>
       <a href="#contact" class="btn-mag btn-o" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;">Get In Touch</a>
     </div>
-    <!-- Floating tech pills -->
     <div class="tech-pills">
       <span class="tpill" style="animation-duration:3s;animation-delay:0s;"><i class="fab fa-python"></i> Python</span>
       <span class="tpill" style="animation-duration:3.4s;animation-delay:.4s;"><i class="fas fa-brain"></i> Machine Learning</span>
@@ -478,7 +551,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </div>
 
 <!-- ABOUT -->
-<section id="about" class="alt">
+<section id="about" class="alt" style="position:relative;">
+  <!-- Floating about particles -->
+  <div class="about-particles" id="aboutParticles"></div>
+
   <div class="sl rv">About Me</div><div class="sdiv rv"></div>
   <div class="about-grid">
     <div class="rvl">
@@ -491,6 +567,19 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
           <div class="abt-photo-fb" id="aboutFb">🧑‍🎓</div>
         </div>
         <span class="av-card-lbl">GIHEN DHARMARATHNE</span>
+
+        <!-- ══ CV DOWNLOAD BUTTON ══ -->
+        <div class="cv-download-wrap">
+          <a href="Gihen_Dharmarathne_CV.pdf" download="Gihen_Dharmarathne_CV.pdf"
+             class="cv-btn" id="cvBtn" onclick="triggerCvDownload(event, this)">
+            <div class="cv-pulse"></div>
+            <div class="cv-pulse2"></div>
+            <i class="fas fa-file-arrow-down cv-icon"></i>
+            <span class="cv-text">Download CV</span>
+            <i class="fas fa-chevron-down cv-arrow"></i>
+          </a>
+        </div>
+
       </div>
       <div class="ic-grid">
         <div class="ic rv"><div class="icl">Name</div><div class="icv">Gihen Dharmarathne</div></div>
@@ -543,7 +632,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <h2 class="stitle rv">Projects I've Built</h2>
   <p class="ssub rv">Academic &amp; personal projects spanning Data Science, AI &amp; Deep Learning, and Sports Analytics.</p>
   <div class="pj-grid">
-
     <div class="pc rv"><div class="pc-inner">
       <div class="pt" style="background:linear-gradient(135deg,#071a10,#0d3020)">
         <div class="pt-ov"></div><div class="pt-shine"></div><div class="pt-scan"></div><div class="pt-corner"></div>
@@ -558,7 +646,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <a href="https://1drv.ms/f/c/5ce9677574ce5316/IgA7Z3OrhsAJTZ7GOB_Sa7h6ASFWJME9Y_LHt5A9jzh7-ys?e=rEEIao" target="_blank" rel="noopener" class="plink">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div></div>
-
     <div class="pc rv"><div class="pc-inner">
       <div class="pt" style="background:linear-gradient(135deg,#0d1a07,#1a3010)">
         <div class="pt-ov"></div><div class="pt-shine"></div><div class="pt-scan"></div><div class="pt-corner"></div>
@@ -573,7 +660,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <a href="https://1drv.ms/f/c/5ce9677574ce5316/IgD8fZAgSjnxSoSYPY_L89u9AVcmPOYIxQxbgEvAP-4eLsA?e=RpNKkL" target="_blank" rel="noopener" class="plink">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div></div>
-
     <div class="pc rv"><div class="pc-inner">
       <div class="pt" style="background:linear-gradient(135deg,#0d1020,#1a1540)">
         <div class="pt-ov"></div><div class="pt-shine"></div><div class="pt-scan"></div><div class="pt-corner"></div>
@@ -588,7 +674,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <a href="https://1drv.ms/f/c/5ce9677574ce5316/IgCWQBAtKCkITqhcKouF5TCgATYEhLlH6juSk5LWh7T49IA?e=KDjC5R" target="_blank" rel="noopener" class="plink">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div></div>
-
     <div class="pc rv"><div class="pc-inner">
       <div class="pt" style="background:linear-gradient(135deg,#180820,#2d1040)">
         <div class="pt-ov"></div><div class="pt-shine"></div><div class="pt-scan"></div><div class="pt-corner"></div>
@@ -603,7 +688,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <a href="https://1drv.ms/f/c/5ce9677574ce5316/IgBl2jm6HLdiRr35f8ZL9H0DATwxbNPPuZ7J-NHj8R-vpHs?e=WOvPlo" target="_blank" rel="noopener" class="plink">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div></div>
-
     <div class="pc rv"><div class="pc-inner">
       <div class="pt" style="background:linear-gradient(135deg,#071520,#0d2840)">
         <div class="pt-ov"></div><div class="pt-shine"></div><div class="pt-scan"></div><div class="pt-corner"></div>
@@ -618,7 +702,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <a href="https://1drv.ms/f/c/5ce9677574ce5316/IgAlXZ3CNRsoR57o39F39TAEASQeYjGjWO6ZaDLW3_wvVWs?e=hr3IlT" target="_blank" rel="noopener" class="plink">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div></div>
-
     <div class="pc rv"><div class="pc-inner">
       <div class="pt" style="background:linear-gradient(135deg,#1a0d07,#301a10)">
         <div class="pt-ov"></div><div class="pt-shine"></div><div class="pt-scan"></div><div class="pt-corner"></div>
@@ -633,7 +716,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <a href="https://1drv.ms/f/c/5ce9677574ce5316/IgCShd6ykWfvS4ewVZ-c-rrsAdU1F5ymlP8jnbwBkuFaewo?e=dGCsYY" target="_blank" rel="noopener" class="plink">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div></div>
-
     <div class="pc rv"><div class="pc-inner">
       <div class="pt" style="background:linear-gradient(135deg,#200710,#3d0d20)">
         <div class="pt-ov"></div><div class="pt-shine"></div><div class="pt-scan"></div><div class="pt-corner"></div>
@@ -648,7 +730,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <a href="https://1drv.ms/f/c/5ce9677574ce5316/IgD0GpG92dJsSbdSoW1RczmWAbVbMJZJrDPAiIHvEJMA3cs?e=499ovw" target="_blank" rel="noopener" class="plink">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
     </div></div>
-
   </div>
 </section>
 
@@ -706,23 +787,57 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <script>
 /* ── LOADER ── */
 (function(){
-  // Lock scroll so no layout shift while loader is visible
   document.body.classList.add('loading');
   const bar=document.getElementById('ldBar'),pct=document.getElementById('ldPct'),ldr=document.getElementById('loader');
   let p=0;
   const iv=setInterval(()=>{
     p+=Math.random()*10+4;
-    if(p>=100){
-      p=100; clearInterval(iv);
-      bar.style.width='100%'; pct.textContent='100%';
-      setTimeout(()=>{
-        ldr.classList.add('done');
-        // Unlock scroll AFTER loader fully fades (500ms transition)
-        setTimeout(()=>document.body.classList.remove('loading'), 520);
-      }, 300);
-    }
-    bar.style.width=p+'%'; pct.textContent=Math.floor(p)+'%';
+    if(p>=100){p=100;clearInterval(iv);bar.style.width='100%';pct.textContent='100%';
+      setTimeout(()=>{ldr.classList.add('done');setTimeout(()=>document.body.classList.remove('loading'),520);},300);}
+    bar.style.width=p+'%';pct.textContent=Math.floor(p)+'%';
   },55);
+})();
+
+/* ── TWINKLING STARS ── */
+(function(){
+  const colors=['rgba(0,212,255,','rgba(0,255,157,','rgba(168,85,247,'];
+  for(let i=0;i<55;i++){
+    const s=document.createElement('div');
+    s.className='star';
+    const sz=(Math.random()*2+1)+'px';
+    const c=colors[Math.floor(Math.random()*3)];
+    Object.assign(s.style,{
+      width:sz,height:sz,
+      left:Math.random()*100+'vw',
+      top:Math.random()*100+'vh',
+      background:c+'0.5)',
+      animationDuration:(2+Math.random()*4)+'s',
+      animationDelay:Math.random()*4+'s'
+    });
+    document.body.appendChild(s);
+  }
+})();
+
+/* ── ABOUT SECTION PARTICLES ── */
+(function(){
+  const container=document.getElementById('aboutParticles');
+  if(!container)return;
+  const colors=['rgba(0,212,255,','rgba(0,255,157,','rgba(168,85,247,','rgba(255,77,109,'];
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='ap';
+    const sz=(3+Math.random()*6)+'px';
+    const c=colors[Math.floor(Math.random()*4)];
+    Object.assign(p.style,{
+      width:sz,height:sz,
+      left:Math.random()*100+'%',
+      top:Math.random()*100+'%',
+      background:c+'0.35)',
+      animationDuration:(5+Math.random()*8)+'s',
+      animationDelay:Math.random()*6+'s'
+    });
+    container.appendChild(p);
+  }
 })();
 
 /* ── SECTION DOTS ── */
@@ -730,24 +845,20 @@ function scrollTo(sel){document.querySelector(sel)?.scrollIntoView({behavior:'sm
 function updateDots(){
   const sections=['home','about','expertise','projects','experience','contact'];
   sections.forEach(id=>{
-    const el=document.getElementById(id);
-    if(!el) return;
-    const dot=document.querySelector(`.sd[data-section="${id}"]`);
-    if(!dot) return;
+    const el=document.getElementById(id);if(!el)return;
+    const dot=document.querySelector(`.sd[data-section="${id}"]`);if(!dot)return;
     const top=el.offsetTop-200;
-    dot.classList.toggle('act',scrollY>=top && scrollY<top+el.offsetHeight);
+    dot.classList.toggle('act',scrollY>=top&&scrollY<top+el.offsetHeight);
   });
 }
 addEventListener('scroll',updateDots);
 
-/* ── SPOTLIGHT on hero ── */
+/* ── SPOTLIGHT ── */
 const spotlight=document.getElementById('spotlight');
 const homeSection=document.getElementById('home');
 homeSection.addEventListener('mousemove',e=>{
   const r=homeSection.getBoundingClientRect();
-  spotlight.style.left=(e.clientX-r.left)+'px';
-  spotlight.style.top=(e.clientY-r.top)+'px';
-  spotlight.style.opacity='1';
+  spotlight.style.left=(e.clientX-r.left)+'px';spotlight.style.top=(e.clientY-r.top)+'px';spotlight.style.opacity='1';
 });
 homeSection.addEventListener('mouseleave',()=>{spotlight.style.opacity='0';});
 
@@ -756,12 +867,8 @@ homeSection.addEventListener('mouseleave',()=>{spotlight.style.opacity='0';});
   const container=document.getElementById('dataPts');
   const terms=['[0.82]','ACC:94%','F1:0.91','loss:0.12','epoch:50','val:0.89','η=0.001','SGD','ReLU','Δw','∇L','[batch]','AUC','ROC','R²','RMSE','XGBoost','CNN','LSTM','API','KNN','SVM','GRU','BERT'];
   for(let i=0;i<20;i++){
-    const el=document.createElement('div');
-    el.className='dp';
-    el.textContent=terms[Math.floor(Math.random()*terms.length)];
-    el.style.left=Math.random()*100+'%';
-    el.style.animationDuration=(16+Math.random()*22)+'s';
-    el.style.animationDelay=Math.random()*22+'s';
+    const el=document.createElement('div');el.className='dp';el.textContent=terms[Math.floor(Math.random()*terms.length)];
+    el.style.left=Math.random()*100+'%';el.style.animationDuration=(16+Math.random()*22)+'s';el.style.animationDelay=Math.random()*22+'s';
     container.appendChild(el);
   }
 })();
@@ -801,18 +908,15 @@ let trailIdx=0;
 addEventListener('mousemove',e=>{
   tx=e.clientX;ty=e.clientY;
   cur.style.left=tx+'px';cur.style.top=ty+'px';
-  // Mouse trail
-  const dot=document.createElement('div');
-  dot.className='trail-dot';
+  const dot=document.createElement('div');dot.className='trail-dot';
   const sz=(4+Math.random()*4)+'px';
   Object.assign(dot.style,{left:tx+'px',top:ty+'px',width:sz,height:sz,background:trailColors[trailIdx++%3]});
-  document.body.appendChild(dot);
-  setTimeout(()=>dot.remove(),600);
+  document.body.appendChild(dot);setTimeout(()=>dot.remove(),600);
 });
 addEventListener('mousedown',()=>cr.classList.add('click'));
 addEventListener('mouseup',()=>cr.classList.remove('click'));
 (function lp(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cr.style.left=cx+'px';cr.style.top=cy+'px';requestAnimationFrame(lp);})();
-document.querySelectorAll('a,button,.pc,.ec,.cc,.sb,.nav-cta,.ic,.stat,.fi-orbit,.tpill').forEach(el=>{
+document.querySelectorAll('a,button,.pc,.ec,.cc,.sb,.nav-cta,.ic,.stat,.fi-orbit,.tpill,.cv-btn').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cr.classList.add('big');cur.classList.add('link');});
   el.addEventListener('mouseleave',()=>{cr.classList.remove('big');cur.classList.remove('link');});
 });
@@ -840,8 +944,6 @@ addEventListener('scroll',()=>{
 /* ── SCROLL REVEAL ── */
 const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('on');}),{threshold:.07});
 document.querySelectorAll('.rv,.rvl,.rvr,.rvz,.sdiv').forEach(el=>obs.observe(el));
-
-/* Scramble animation removed — was causing layout reflow/shake */
 
 /* ── SKILL BARS ── */
 const bObs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.querySelectorAll('.fill').forEach((f,i)=>{setTimeout(()=>{f.style.width=f.dataset.w+'%';setTimeout(()=>f.classList.add('done'),1800);},120+i*140);});}),{threshold:.18});
@@ -880,80 +982,46 @@ document.querySelectorAll('.btn-mag').forEach(btn=>{
   btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
 });
 
-/* ── STAGGER DELAYS ── */
-document.querySelectorAll('.exp-grid .ec').forEach((c,i)=>{c.style.transitionDelay=`${i*.09}s`;});
-document.querySelectorAll('.pj-grid .pc').forEach((c,i)=>{c.style.transitionDelay=`${i*.08}s`;});
+/* ══ CV DOWNLOAD ══ */
+function triggerCvDownload(e, btn) {
+  // Ripple effect on click
+  const ripple = document.createElement('div');
+  ripple.className = 'cv-ripple-el';
+  const r = btn.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  Object.assign(ripple.style, { left: x + 'px', top: y + 'px' });
+  btn.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 700);
 
+  // Toast notification
+  const toast = document.getElementById('dlToast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
 
-const FORMSPREE_URL = 'https://formspree.io/f/mvzvdaql';
-// Hide setup notice automatically once real endpoint is pasted in
-if(!FORMSPREE_URL.includes('YOUR_FORMSPREE_ENDPOINT')){
-  const n=document.getElementById('formspreeNotice');if(n)n.style.display='none';
-}
-
-async function sendMessage(){
-  const name    = document.getElementById('cName').value.trim();
-  const email   = document.getElementById('cEmail').value.trim();
-  const subject = document.getElementById('cSubject').value.trim();
-  const message = document.getElementById('cMessage').value.trim();
-  const status  = document.getElementById('formStatus');
-  const btn     = document.querySelector('#contact .btn-p');
-
-  // Validation
-  if(!name||!email||!subject||!message){
-    status.className='form-status error';
-    status.style.display='flex';
-    status.innerHTML='<i class="fas fa-exclamation-circle"></i> Please fill in all fields.';
-    return;
-  }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    status.className='form-status error';
-    status.style.display='flex';
-    status.innerHTML='<i class="fas fa-exclamation-circle"></i> Please enter a valid email address.';
-    return;
-  }
-
-  // Show loading state
-  btn.textContent='Sending…';
-  btn.disabled=true;
-  status.style.display='none';
-
-  // If Formspree endpoint not yet configured → fall back to mailto
-  if(FORMSPREE_URL.includes('YOUR_FORMSPREE_ENDPOINT')){
-    const body=`Hi Gihen,%0A%0AMy name is ${encodeURIComponent(name)} (${encodeURIComponent(email)}).%0A%0ASubject: ${encodeURIComponent(subject)}%0A%0A${encodeURIComponent(message)}%0A%0ABest regards,%0A${encodeURIComponent(name)}`;
-    window.open(`mailto:gihendharmarathne@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`,'_blank');
-    status.className='form-status success';
-    status.style.display='flex';
-    status.innerHTML='<i class="fas fa-check-circle"></i> Opening your email app — please send from there. To receive emails directly here, set up Formspree (see code comments).';
-    btn.innerHTML='Send Message &nbsp;<i class="fas fa-paper-plane"></i>';
-    btn.disabled=false;
-    ['cName','cEmail','cSubject','cMessage'].forEach(id=>{document.getElementById(id).value='';});
-    return;
-  }
-
-  // Send via Formspree
-  try{
-    const res = await fetch(FORMSPREE_URL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({name,email,subject,message,_replyto:email})
+  // Particle burst from button
+  for (let i = 0; i < 10; i++) {
+    const p = document.createElement('div');
+    const angle = (Math.PI * 2 / 10) * i;
+    const dist = 40 + Math.random() * 50;
+    const sz = (3 + Math.random() * 4) + 'px';
+    const colors = ['rgba(0,212,255,.7)', 'rgba(0,255,157,.6)', 'rgba(168,85,247,.6)'];
+    Object.assign(p.style, {
+      position: 'fixed',
+      left: (r.left + r.width / 2) + 'px',
+      top: (r.top + r.height / 2) + 'px',
+      width: sz, height: sz,
+      borderRadius: '50%',
+      background: colors[Math.floor(Math.random() * 3)],
+      transform: 'translate(-50%,-50%)',
+      pointerEvents: 'none',
+      zIndex: '9991'
     });
-    if(res.ok){
-      status.className='form-status success';
-      status.style.display='flex';
-      status.innerHTML='<i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon. 🎉';
-      ['cName','cEmail','cSubject','cMessage'].forEach(id=>{document.getElementById(id).value='';});
-    } else {
-      const data=await res.json().catch(()=>({}));
-      throw new Error(data?.errors?.[0]?.message||'Submission failed');
-    }
-  } catch(err){
-    status.className='form-status error';
-    status.style.display='flex';
-    status.innerHTML=`<i class="fas fa-exclamation-circle"></i> Failed to send: ${err.message}. Please email directly: gihendharmarathne@gmail.com`;
-  } finally {
-    btn.innerHTML='Send Message &nbsp;<i class="fas fa-paper-plane"></i>';
-    btn.disabled=false;
+    document.body.appendChild(p);
+    p.animate([
+      { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+      { transform: `translate(calc(-50% + ${Math.cos(angle) * dist}px), calc(-50% + ${Math.sin(angle) * dist}px)) scale(0)`, opacity: 0 }
+    ], { duration: 600 + Math.random() * 200, easing: 'ease-out' }).onfinish = () => p.remove();
   }
 }
 
@@ -966,11 +1034,11 @@ addEventListener('mousemove',e=>{
   document.querySelector('.aurora-4')?.style.setProperty('transform',`translate(${mx*.4}px,${my*.4}px)`);
 });
 
-/* ── CLICK RIPPLE (multi-color) ── */
+/* ── CLICK RIPPLE ── */
 const rippleColors=['rgba(0,212,255,.6)','rgba(0,255,157,.5)','rgba(168,85,247,.5)'];
 let rippleIdx=0;
 addEventListener('click',e=>{
-  if(e.target.closest('a,button,input,textarea')) return;
+  if(e.target.closest('a,button,input,textarea'))return;
   const r=document.createElement('div');
   Object.assign(r.style,{position:'fixed',left:e.clientX+'px',top:e.clientY+'px',width:'6px',height:'6px',borderRadius:'50%',background:rippleColors[rippleIdx++%3],transform:'translate(-50%,-50%)',pointerEvents:'none',zIndex:'9990'});
   document.body.appendChild(r);
@@ -981,16 +1049,39 @@ addEventListener('click',e=>{
 addEventListener('dblclick',e=>{
   for(let i=0;i<12;i++){
     const p=document.createElement('div');
-    const angle=Math.random()*Math.PI*2;const dist=60+Math.random()*80;
-    const sz=(3+Math.random()*5)+'px';
+    const angle=Math.random()*Math.PI*2;const dist=60+Math.random()*80;const sz=(3+Math.random()*5)+'px';
     Object.assign(p.style,{position:'fixed',left:e.clientX+'px',top:e.clientY+'px',width:sz,height:sz,borderRadius:'50%',background:rippleColors[Math.floor(Math.random()*3)],transform:'translate(-50%,-50%)',pointerEvents:'none',zIndex:'9991'});
     document.body.appendChild(p);
-    p.animate([
-      {transform:'translate(-50%,-50%)scale(1)',opacity:1},
-      {transform:`translate(calc(-50% + ${Math.cos(angle)*dist}px),calc(-50% + ${Math.sin(angle)*dist}px))scale(0)`,opacity:0}
-    ],{duration:700+Math.random()*300,easing:'ease-out'}).onfinish=()=>p.remove();
+    p.animate([{transform:'translate(-50%,-50%)scale(1)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(angle)*dist}px),calc(-50% + ${Math.sin(angle)*dist}px))scale(0)`,opacity:0}],{duration:700+Math.random()*300,easing:'ease-out'}).onfinish=()=>p.remove();
   }
 });
+
+/* ── FORMSPREE ── */
+const FORMSPREE_URL='https://formspree.io/f/mvzvdaql';
+async function sendMessage(){
+  const name=document.getElementById('cName').value.trim();
+  const email=document.getElementById('cEmail').value.trim();
+  const subject=document.getElementById('cSubject').value.trim();
+  const message=document.getElementById('cMessage').value.trim();
+  const status=document.getElementById('formStatus');
+  const btn=document.querySelector('#contact .btn-p');
+  if(!name||!email||!subject||!message){status.className='form-status error';status.style.display='flex';status.innerHTML='<i class="fas fa-exclamation-circle"></i> Please fill in all fields.';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){status.className='form-status error';status.style.display='flex';status.innerHTML='<i class="fas fa-exclamation-circle"></i> Please enter a valid email address.';return;}
+  btn.textContent='Sending…';btn.disabled=true;status.style.display='none';
+  if(FORMSPREE_URL.includes('YOUR_FORMSPREE_ENDPOINT')){
+    const body=`Hi Gihen,%0A%0AMy name is ${encodeURIComponent(name)} (${encodeURIComponent(email)}).%0A%0ASubject: ${encodeURIComponent(subject)}%0A%0A${encodeURIComponent(message)}%0A%0ABest regards,%0A${encodeURIComponent(name)}`;
+    window.open(`mailto:gihendharmarathne@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`,'_blank');
+    status.className='form-status success';status.style.display='flex';status.innerHTML='<i class="fas fa-check-circle"></i> Opening your email app — please send from there.';
+    btn.innerHTML='Send Message &nbsp;<i class="fas fa-paper-plane"></i>';btn.disabled=false;
+    ['cName','cEmail','cSubject','cMessage'].forEach(id=>{document.getElementById(id).value='';});return;
+  }
+  try{
+    const res=await fetch(FORMSPREE_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,subject,message,_replyto:email})});
+    if(res.ok){status.className='form-status success';status.style.display='flex';status.innerHTML='<i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon. 🎉';['cName','cEmail','cSubject','cMessage'].forEach(id=>{document.getElementById(id).value='';});}
+    else{const data=await res.json().catch(()=>({}));throw new Error(data?.errors?.[0]?.message||'Submission failed');}
+  }catch(err){status.className='form-status error';status.style.display='flex';status.innerHTML=`<i class="fas fa-exclamation-circle"></i> Failed to send: ${err.message}. Please email directly: gihendharmarathne@gmail.com`;}
+  finally{btn.innerHTML='Send Message &nbsp;<i class="fas fa-paper-plane"></i>';btn.disabled=false;}
+}
 </script>
 </body>
 </html>
